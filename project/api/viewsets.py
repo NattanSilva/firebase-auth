@@ -1,12 +1,11 @@
 from rest_framework.views import APIView, Request, Response, status
 from rest_framework.viewsets import ModelViewSet
-from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from ..models import User
 from .fyrebase import auth
-from .permissions import IsAccountOwner
-from .serializers import LoginSerializer, UserSerializer
 from .middlewares import FirebaseAuthentication
+from .permissions import IsAccountOwner
+from .serializers import LoginSerializer, ResetPasswordSerializer, UserSerializer
 
 
 class UserViewsets(ModelViewSet):
@@ -37,4 +36,19 @@ class LoginViewsets(APIView):
             email=serializer.data["email"], password=serializer.data["password"]
         )
 
-        return Response({'access': login["idToken"], 'refresh': login["refreshToken"]}, status=status.HTTP_200_OK)
+        return Response(
+            {"access": login["idToken"], "refresh": login["refreshToken"]},
+            status=status.HTTP_200_OK,
+        )
+
+
+class ResetarSenhaView(APIView):
+    def post(self, request: Request) -> Response:
+        serializer = ResetPasswordSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        email = serializer.data["email"]
+        try:
+            user = auth.send_password_reset_email(email)
+            return Response({"message": "enviou email"}, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "Email não enviado"}, status=status.HTTP_400_BAD_REQUEST)
