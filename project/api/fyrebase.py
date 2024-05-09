@@ -1,5 +1,6 @@
 import pyrebase
 
+# Descomente a linha abaixo e atualize com as suas credenciais Firebase
 # firebaseConfig = {
 #     "apiKey": "AIzaSyAHUP96N1jxm7MfAhrqK3ExxAVS6lqAlYA",
 #     "authDomain": "pyrebase-auth.firebaseapp.com",
