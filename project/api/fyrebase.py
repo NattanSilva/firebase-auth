@@ -2,13 +2,13 @@ import pyrebase
 
 # Descomente a linha abaixo e atualize com as suas credenciais Firebase
 # firebaseConfig = {
-#     "apiKey": "AIzaSyAHUP96N1jxm7MfAhrqK3ExxAVS6lqAlYA",
-#     "authDomain": "pyrebase-auth.firebaseapp.com",
-#     "projectId": "pyrebase-auth",
-#     "storageBucket": "pyrebase-auth.appspot.com",
-#     "messagingSenderId": "278748329803",
-#     "appId": "1:278748329803:web:65aa8082b970ba2f2e5ace",
-#     "databaseURL": "https://pyrebase-auth-default-rtdb.firebaseio.com/",
+#     "apiKey": "",
+#     "authDomain": "",
+#     "projectId": "",
+#     "storageBucket": "",
+#     "messagingSenderId": "",
+#     "appId": "",
+#     "databaseURL": "",
 # }
 
 firebase = pyrebase.initialize_app(config=firebaseConfig)
