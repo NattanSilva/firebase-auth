@@ -7,7 +7,11 @@ class IsAccountOwner(permissions.BasePermission):
     def has_permission(self, request: Request, view: View) -> bool:
         auth_header = request.headers.get("Authorization")
 
+        if request.method == "POST":
+            return True
+
         if not auth_header or not auth_header.startswith("Bearer "):
             return False
-
-        return request.method == "POST" or request.user["is_authenticated"]
+        
+        if request.user["is_authenticated"]:
+            return True

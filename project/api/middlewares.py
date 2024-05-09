@@ -5,7 +5,8 @@ import firebase_admin
 from django.forms.models import model_to_dict
 from firebase_admin import auth, credentials
 from rest_framework import authentication
-from rest_framework.views import Request, Response, status
+from rest_framework.views import Request
+from rest_framework.exceptions import AuthenticationFailed
 
 from ..models import User
 
@@ -20,19 +21,21 @@ class FirebaseAuthentication(authentication.BaseAuthentication):
         id_token = request.headers.get("Authorization")
 
         if not id_token:
-            return None
+           return None
 
         try:
             decoded_token = auth.verify_id_token(id_token.split(" ")[1])
             print("Token verificado com sucesso!")
             email = decoded_token["email"]
-            # Faça algo com o UID, como autenticar o usuário
             user = model_to_dict(User.objects.get(email=email))
             user.update({"is_authenticated": True})
             return (user, None)
         except auth.InvalidIdTokenError:
             # Token inválido
-            raise ("message: token invalido!")
+            raise AuthenticationFailed("Token inválido")
+        except User.DoesNotExist:
+            # Usuário não encontrado
+            raise AuthenticationFailed("Usuário não encontrado")
         except Exception as e:
             # Outro erro
-            raise (f"Erro ao verificar o token do Firebase: {e}")
+            raise AuthenticationFailed(str(e))

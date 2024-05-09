@@ -1,3 +1,5 @@
+import pyrebase
+from firebase_admin.exceptions import ConflictError
 from rest_framework.views import APIView, Request, Response, status
 from rest_framework.viewsets import ModelViewSet
 
@@ -5,7 +7,8 @@ from ..models import User
 from .fyrebase import auth
 from .middlewares import FirebaseAuthentication
 from .permissions import IsAccountOwner
-from .serializers import LoginSerializer, ResetPasswordSerializer, UserSerializer
+from .serializers import (LoginSerializer, ResetPasswordSerializer,
+                          UserSerializer)
 
 
 class UserViewsets(ModelViewSet):
@@ -17,16 +20,19 @@ class UserViewsets(ModelViewSet):
     def create(self, request: Request, *args, **kwargs) -> Response:
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
 
-        print(serializer.data)
+        try:
+            auth.create_user_with_email_and_password(
+                email=request.data["email"], password=request.data["password"]
+            )
 
-        auth.create_user_with_email_and_password(
-            email=serializer.data["email"], password=request.data["password"]
-        )
-
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except pyrebase.pyrebase.HTTPError as err:
+            if "EMAIL_EXISTS" in str(err):
+                return Response({"message": "Email ja existe!"}, status=status.HTTP_409_CONFLICT) 
+            else:
+                return Response({"erro": str(err)}, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginViewsets(APIView):
     def post(self, request: Request) -> Response:
