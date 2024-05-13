@@ -5,8 +5,8 @@ import firebase_admin
 from django.forms.models import model_to_dict
 from firebase_admin import auth, credentials
 from rest_framework import authentication
-from rest_framework.views import Request
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.views import Request
 
 from ..models import User
 
@@ -21,7 +21,7 @@ class FirebaseAuthentication(authentication.BaseAuthentication):
         id_token = request.headers.get("Authorization")
 
         if not id_token:
-           return None
+            return None
 
         try:
             decoded_token = auth.verify_id_token(id_token.split(" ")[1])
@@ -29,6 +29,8 @@ class FirebaseAuthentication(authentication.BaseAuthentication):
             email = decoded_token["email"]
             user = model_to_dict(User.objects.get(email=email))
             user.update({"is_authenticated": True})
+            user.pop("password")
+            request.validated_email = email
             return (user, None)
         except auth.InvalidIdTokenError:
             # Token inválido

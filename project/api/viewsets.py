@@ -1,5 +1,4 @@
 import pyrebase
-from firebase_admin.exceptions import ConflictError
 from rest_framework.views import APIView, Request, Response, status
 from rest_framework.viewsets import ModelViewSet
 
@@ -30,9 +29,31 @@ class UserViewsets(ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except pyrebase.pyrebase.HTTPError as err:
             if "EMAIL_EXISTS" in str(err):
-                return Response({"message": "Email ja existe!"}, status=status.HTTP_409_CONFLICT) 
+                return Response(
+                    {"message": "Email ja existe!"}, status=status.HTTP_409_CONFLICT
+                )
             else:
                 return Response({"erro": str(err)}, status=status.HTTP_400_BAD_REQUEST)
+
+    def destroy(self, request: Request, *args, **kwargs):
+        token = request.headers.get("Authorization").split(" ")[1]
+
+        pk = kwargs.get("pk")
+
+        user_to_delete = User.objects.get(id=pk)
+
+        if request.validated_email != user_to_delete.email:
+            return Response({"message": "You dont have permission for this action"}, status=status.HTTP_403_FORBIDDEN)
+
+        try:
+            auth.delete_user_account(token)
+            return super().destroy(request, *args, **kwargs)
+        except pyrebase.pyrebase.HTTPError as err:
+            return Response(
+                {"message": "Erro ao deletar conta", "erro": str(err)},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
 
 class LoginViewsets(APIView):
     def post(self, request: Request) -> Response:
@@ -57,4 +78,6 @@ class ResetarSenhaView(APIView):
             user = auth.send_password_reset_email(email)
             return Response({"message": "enviou email"}, status=status.HTTP_200_OK)
         except:
-            return Response({"message": "Email não enviado"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"message": "Email não enviado"}, status=status.HTTP_400_BAD_REQUEST
+            )

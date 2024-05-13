@@ -1,0 +1,268 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-05-09T18:03:40.250Z",
+  "__export_source": "insomnia.desktop.app:v9.1.1",
+  "resources": [
+    {
+      "_id": "req_f5c14e44a7104f71b932d8e6772b45fd",
+      "parentId": "fld_ca01bec804934468b083faa3f679d0ac",
+      "modified": 1715258508895,
+      "created": 1714651033985,
+      "url": "{{ _.BASE_URL }}login/",
+      "name": "Login",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "\t{\n\t\t\"email\": \"natan@mail.com\",\n\t\t\"password\": \"12345678\"\n\t}"
+      },
+      "preRequestScript": "",
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "insomnia/9.0.0" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1715258364448,
+      "isPrivate": false,
+      "pathParameters": [],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_ca01bec804934468b083faa3f679d0ac",
+      "parentId": "wrk_9d0578afbdb94981be9ff3aaeeb54949",
+      "modified": 1715258354364,
+      "created": 1715258354364,
+      "name": "Session",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1715258354364,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_9d0578afbdb94981be9ff3aaeeb54949",
+      "parentId": null,
+      "modified": 1714650617166,
+      "created": 1714650617166,
+      "name": "pyrebase-tests",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_c9b5438438904ff69348fe3efd257681",
+      "parentId": "fld_5fbd69ce621a4c46bb86a433bcdda889",
+      "modified": 1715258458081,
+      "created": 1714650676913,
+      "url": "{{ _.BASE_URL }}users/",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"natan\",\n\t\"email\": \"natan@mail.com\",\n\t\"password\": \"12345678\"\n}"
+      },
+      "preRequestScript": "",
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "insomnia/9.0.0" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1715258329684,
+      "isPrivate": false,
+      "pathParameters": [],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_5fbd69ce621a4c46bb86a433bcdda889",
+      "parentId": "wrk_9d0578afbdb94981be9ff3aaeeb54949",
+      "modified": 1715258323802,
+      "created": 1715258323802,
+      "name": "User",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1715258323802,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_424d5741005a453fa7bba534e88164ec",
+      "parentId": "fld_5fbd69ce621a4c46bb86a433bcdda889",
+      "modified": 1715258483278,
+      "created": 1715176061181,
+      "url": "{{ _.BASE_URL }}users/",
+      "name": "Read All",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "preRequestScript": "",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "User-Agent",
+          "value": "insomnia/9.1.1",
+          "id": "pair_c369768c9b5b418b8b37b39b3ec95d7b"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.TOKEN }}",
+        "disabled": false
+      },
+      "metaSortKey": -1715258329584,
+      "isPrivate": false,
+      "pathParameters": [],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1c4699397fbe4718b1cdfd002d80f96b",
+      "parentId": "fld_5fbd69ce621a4c46bb86a433bcdda889",
+      "modified": 1715258491088,
+      "created": 1715258384706,
+      "url": "{{ _.BASE_URL }}users/1/",
+      "name": "Read One",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "preRequestScript": "",
+      "parameters": [],
+      "headers": [
+        {
+          "name": "User-Agent",
+          "value": "insomnia/9.1.1",
+          "id": "pair_c369768c9b5b418b8b37b39b3ec95d7b"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.TOKEN }}",
+        "disabled": false
+      },
+      "metaSortKey": -1715258329534,
+      "isPrivate": false,
+      "pathParameters": [],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_7733fb9009b14c61b8942072022ee741",
+      "parentId": "fld_5fbd69ce621a4c46bb86a433bcdda889",
+      "modified": 1715258624906,
+      "created": 1714672332373,
+      "url": "{{ _.BASE_URL }}users/1/",
+      "name": "Update",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Natan updated\"\n}"
+      },
+      "preRequestScript": "",
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "insomnia/9.1.0" }
+      ],
+      "authentication": { "type": "bearer", "token": "{{ _.TOKEN }}" },
+      "metaSortKey": -1715258329484,
+      "isPrivate": false,
+      "pathParameters": [],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_64afcc95ce4f48cb9fc9bc55a374fe2b",
+      "parentId": "fld_5fbd69ce621a4c46bb86a433bcdda889",
+      "modified": 1715258690029,
+      "created": 1715258428404,
+      "url": "{{ _.BASE_URL }}users/1/",
+      "name": "Delete",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "preRequestScript": "",
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/9.1.1" }],
+      "authentication": { "type": "bearer", "token": "{{ _.TOKEN }}" },
+      "metaSortKey": -1715258329384,
+      "isPrivate": false,
+      "pathParameters": [],
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_a1282beb4f878c69c808f6d3391e27f6bbb2e88d",
+      "parentId": "wrk_9d0578afbdb94981be9ff3aaeeb54949",
+      "modified": 1714650617170,
+      "created": 1714650617170,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1714650617170,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_a1282beb4f878c69c808f6d3391e27f6bbb2e88d",
+      "parentId": "wrk_9d0578afbdb94981be9ff3aaeeb54949",
+      "modified": 1714650617172,
+      "created": 1714650617172,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "env_decbff32c09f42f28be76d9bdf1a5b3a",
+      "parentId": "env_a1282beb4f878c69c808f6d3391e27f6bbb2e88d",
+      "modified": 1715258563784,
+      "created": 1714650630362,
+      "name": "Dev",
+      "data": {
+        "BASE_URL": "localhost:8000/api/",
+        "TOKEN": "{% response 'body', 'req_f5c14e44a7104f71b932d8e6772b45fd', 'b64::JC5hY2Nlc3M=::46b', 'never', 60 %}"
+      },
+      "dataPropertyOrder": { "&": ["BASE_URL", "TOKEN"] },
+      "color": "#09e135",
+      "isPrivate": false,
+      "metaSortKey": 1714650630362,
+      "_type": "environment"
+    }
+  ]
+}
