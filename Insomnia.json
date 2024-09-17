@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2024-09-17T18:44:39.666Z",
+  "__export_date": "2024-09-17T18:53:01.345Z",
   "__export_source": "insomnia.desktop.app:v9.3.3",
   "resources": [
     {
@@ -1345,7 +1345,7 @@
     {
       "_id": "req_b1490ca771884603b7fe1aef39301ccc",
       "parentId": "fld_45a08103538f4189a3b3292ca22135f8",
-      "modified": 1726507012417,
+      "modified": 1726599064078,
       "created": 1726506422467,
       "url": "{{ _.BASE_URL }}usf/",
       "name": "Create",
@@ -1358,7 +1358,8 @@
       "parameters": [],
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
-        { "name": "User-Agent", "value": "insomnia/9.3.3" }
+        { "name": "User-Agent", "value": "insomnia/9.3.3" },
+        { "name": "Authorization", "value": "Bearer {{ _.ADMIN_TOKEN }}" }
       ],
       "authentication": {},
       "metaSortKey": -1726506305794,
@@ -1480,7 +1481,7 @@
     {
       "_id": "req_fc2d3f5fd74243daab8afac73d8a8214",
       "parentId": "fld_45a08103538f4189a3b3292ca22135f8",
-      "modified": 1726507045587,
+      "modified": 1726599076105,
       "created": 1726507040093,
       "url": "{{ _.BASE_URL }}usf/1/",
       "name": "Update",
@@ -1488,7 +1489,10 @@
       "method": "PATCH",
       "body": {},
       "parameters": [],
-      "headers": [{ "name": "User-Agent", "value": "insomnia/9.3.3" }],
+      "headers": [
+        { "name": "User-Agent", "value": "insomnia/9.3.3" },
+        { "name": "Authorization", "value": "Bearer {{ _.ADMIN_TOKEN }}" }
+      ],
       "authentication": {},
       "metaSortKey": -1726468584169.5,
       "isPrivate": false,
@@ -1504,7 +1508,7 @@
     {
       "_id": "req_b97452da39584bcdb9b575bf97806cec",
       "parentId": "fld_45a08103538f4189a3b3292ca22135f8",
-      "modified": 1726507080039,
+      "modified": 1726599080478,
       "created": 1726507077415,
       "url": "{{ _.BASE_URL }}usf/1/",
       "name": "Delete",
@@ -1512,7 +1516,10 @@
       "method": "DELETE",
       "body": {},
       "parameters": [],
-      "headers": [{ "name": "User-Agent", "value": "insomnia/9.3.3" }],
+      "headers": [
+        { "name": "User-Agent", "value": "insomnia/9.3.3" },
+        { "name": "Authorization", "value": "Bearer {{ _.ADMIN_TOKEN }}" }
+      ],
       "authentication": {},
       "metaSortKey": -1726462297248.75,
       "isPrivate": false,
@@ -1528,7 +1535,7 @@
     {
       "_id": "req_d7f64e9b6d9c4e78b4f4c656094d4625",
       "parentId": "fld_98ee8860da6c4ae6b510dcebe52e408a",
-      "modified": 1726507314760,
+      "modified": 1726599089857,
       "created": 1726507275455,
       "url": "{{ _.BASE_URL }}grupoUsf/",
       "name": "Create",
@@ -1541,7 +1548,8 @@
       "parameters": [],
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
-        { "name": "User-Agent", "value": "insomnia/9.3.3" }
+        { "name": "User-Agent", "value": "insomnia/9.3.3" },
+        { "name": "Authorization", "value": "Bearer {{ _.ADMIN_TOKEN }}" }
       ],
       "authentication": {},
       "metaSortKey": -1726507219734,
@@ -1618,7 +1626,7 @@
     {
       "_id": "req_1d3d084df00d4ab08569252dbd0d92a2",
       "parentId": "fld_98ee8860da6c4ae6b510dcebe52e408a",
-      "modified": 1726508160730,
+      "modified": 1726599103391,
       "created": 1726508156757,
       "url": "{{ _.BASE_URL }}grupoUsf/1/",
       "name": "Update",
@@ -1626,7 +1634,10 @@
       "method": "PATCH",
       "body": {},
       "parameters": [],
-      "headers": [{ "name": "User-Agent", "value": "insomnia/9.3.3" }],
+      "headers": [
+        { "name": "User-Agent", "value": "insomnia/9.3.3" },
+        { "name": "Authorization", "value": "Bearer {{ _.ADMIN_TOKEN }}" }
+      ],
       "authentication": {},
       "metaSortKey": -1726506771599.75,
       "isPrivate": false,
@@ -1666,7 +1677,7 @@
     {
       "_id": "req_601c29f365004995bb2d61b2329a469f",
       "parentId": "fld_98ee8860da6c4ae6b510dcebe52e408a",
-      "modified": 1726510498398,
+      "modified": 1726599148688,
       "created": 1726508189648,
       "url": "{{ _.BASE_URL }}grupoUsf/1/add",
       "name": "Add user",
@@ -1674,12 +1685,13 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"idProfissional\": 3\n}"
+        "text": "{\n\t\"idProfissional\": 4\n}"
       },
       "parameters": [],
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
-        { "name": "User-Agent", "value": "insomnia/9.3.3" }
+        { "name": "User-Agent", "value": "insomnia/9.3.3" },
+        { "name": "Authorization", "value": "Bearer {{ _.ADMIN_TOKEN }}" }
       ],
       "authentication": {},
       "metaSortKey": -1726506696827.375,
@@ -1696,7 +1708,7 @@
     {
       "_id": "req_d5d3e31c19c94a1f85473ce0823a94bc",
       "parentId": "fld_98ee8860da6c4ae6b510dcebe52e408a",
-      "modified": 1726511991106,
+      "modified": 1726599113019,
       "created": 1726510505619,
       "url": "{{ _.BASE_URL }}grupoUsf/1/remove",
       "name": "Remove user",
@@ -1709,7 +1721,8 @@
       "parameters": [],
       "headers": [
         { "name": "Content-Type", "value": "application/json" },
-        { "name": "User-Agent", "value": "insomnia/9.3.3" }
+        { "name": "User-Agent", "value": "insomnia/9.3.3" },
+        { "name": "Authorization", "value": "Bearer {{ _.ADMIN_TOKEN }}" }
       ],
       "authentication": {},
       "metaSortKey": -1726506659541.1875,
