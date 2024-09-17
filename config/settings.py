@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
-import dotenv
+from datetime import timedelta
 from pathlib import Path
+
+import dotenv
 
 dotenv.load_dotenv()
 
@@ -113,6 +115,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

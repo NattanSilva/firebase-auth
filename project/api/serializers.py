@@ -1,6 +1,13 @@
 from rest_framework import serializers
 
-from ..models import User
+from ..models import (
+    CrescimentoCrianca,
+    Crianca,
+    Endereco,
+    GrupoUsf,
+    UnidadeSaudeFamiliar,
+    User,
+)
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -19,3 +26,41 @@ class LoginSerializer(serializers.Serializer):
 
 class ResetPasswordSerializer(serializers.Serializer):
     email = serializers.EmailField()
+
+
+class CriancaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Crianca
+        fields = "__all__"
+
+
+class CrescimentoCriancaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CrescimentoCrianca
+        fields = "__all__"
+
+
+class EnderecoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Endereco
+        fields = "__all__"
+
+
+class GrupoUsfSerializer(serializers.ModelSerializer):
+    profissionais = UserSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = GrupoUsf
+        fields = "__all__"
+
+
+class UnidadeSaudeFamiliarSerializer(serializers.ModelSerializer):
+    grupos = GrupoUsfSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = UnidadeSaudeFamiliar
+        fields = ["id", "nome", "criadoEmDiaMesAno", "endereco", "grupos"]
+
+
+class AdicionarProfissionalSerializer(serializers.Serializer):
+    idProfissional = serializers.IntegerField()
