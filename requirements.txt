@@ -8,8 +8,10 @@ charset-normalizer==3.3.2
 click==8.1.7
 cryptography==42.0.5
 Django==5.0.4
+django-seed==0.3.1
 djangorestframework==3.15.1
 djangorestframework-simplejwt==5.3.1
+Faker==29.0.0
 firebase-admin==6.5.0
 gcloud==0.18.3
 google-api-core==2.19.0
@@ -45,6 +47,7 @@ PyJWT==2.9.0
 pyparsing==3.1.2
 Pyrebase4==4.8.0
 pyrebase5==5.0.1
+python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 python-jwt==4.1.0
 requests==2.31.0
@@ -53,6 +56,7 @@ rsa==4.9
 setuptools==69.5.1
 six==1.16.0
 sqlparse==0.5.0
+toposort==1.10
 typing_extensions==4.11.0
 uritemplate==4.1.1
 urllib3==1.26.18
