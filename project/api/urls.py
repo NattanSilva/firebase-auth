@@ -20,7 +20,7 @@ from .viewsets import (
 router = DefaultRouter()
 router.register("users", UserViewsets)
 router.register("crianca", CriancaViewset)
-router.register("crescimento", CrescimentoCriancaViewset)
+router.register("crescimentoCrianca", CrescimentoCriancaViewset)
 router.register("enderecos", EnderecoViewsets)
 router.register("usf", UsfViewsets)
 router.register("grupoUsf", GrupoUsfViewsets)

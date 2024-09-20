@@ -9,7 +9,6 @@ from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.views import Request
 
 from ..models import User
-
 from .utils import validate_env_variables
 
 dotenv.load_dotenv()

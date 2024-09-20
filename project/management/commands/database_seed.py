@@ -6,15 +6,9 @@ from django.core.management.base import BaseCommand
 from django.utils import timezone
 from django_seed import Seed
 
-from project.models import (
-    CrescimentoCrianca,
-    Crianca,
-    CriancaProfissional,
-    Endereco,
-    GrupoUsf,
-    UnidadeSaudeFamiliar,
-    User,
-)
+from project.models import (CrescimentoCrianca, Crianca, CriancaProfissional,
+                            Endereco, GrupoUsf, Periodo, UnidadeSaudeFamiliar,
+                            User)
 
 from ...api.fyrebase import auth
 
@@ -182,6 +176,193 @@ class Command(BaseCommand):
         seeder.execute()
         self.stdout.write(self.style.SUCCESS("✅ Crianças relacionadas com sucesso."))
 
+        # Criando dados de crescimento do joãzinho
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.PRIMEIRA_SEMANA._value_,
+                "altura": 45,
+                "peso": 3.5,
+                "perimetro": 2,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.UM_MES._value_,
+                "altura": 55,
+                "peso": 4.1,
+                "perimetro": 2.5
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.DOIS_MESES._value_,
+                "altura": 57,
+	            "peso": 4.8,
+	            "perimetro": 2.7,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.QUATRO_MESES._value_,
+                "altura": 62,
+                "peso": 6.1,
+                "perimetro": 3,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.SEIS_MESES._value_,
+                "altura": 64,
+                "peso": 7.3,
+                "perimetro": 3.2,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.NOVE_MESES._value_,
+                "altura": 69,
+                "peso": 8.65,
+                "perimetro": 4.7,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.DOZE_MESES._value_,
+                "altura": 75,
+                "peso": 9.8,
+                "perimetro": 6.2,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.QUINZE_MESES._value_,
+                "altura": 77,
+                "peso": 10.4,
+                "perimetro": 7.7,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.DEZOITO_MESES._value_,
+                "altura": 80,
+                "peso": 10.8,
+                "perimetro": 9.2,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": joazinho,
+                "idadeCrianca": Periodo.VINTE_QUATRO_MESES._value_,
+                "altura": 85,
+                "peso": 11.8,
+                "perimetro": 12.2,
+            }
+        )
+
+        # Criando Crescimento da silvinha
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": silvinha,
+                "idadeCrianca": Periodo.PRIMEIRA_SEMANA._value_,
+                "altura": 45,
+                "peso": 3.5,
+                "perimetro": 2,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": silvinha,
+                "idadeCrianca": Periodo.UM_MES._value_,
+                "altura": 55,
+                "peso": 4.1,
+                "perimetro": 2.5
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": silvinha,
+                "idadeCrianca": Periodo.DOIS_MESES._value_,
+                "altura": 57,
+	            "peso": 4.8,
+	            "perimetro": 2.7,
+            }
+        )
+        
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": silvinha,
+                "idadeCrianca": Periodo.QUATRO_MESES._value_,
+                "altura": 62,
+                "peso": 6.1,
+                "perimetro": 3,
+            }
+        )
+
+        seeder.add_entity(
+            CrescimentoCrianca,
+            1,
+            {
+                "idCrianca": silvinha,
+                "idadeCrianca": Periodo.SEIS_MESES._value_,
+                "altura": 64,
+                "peso": 7.3,
+                "perimetro": 3.2,
+            }
+        )
+
+        seeder.execute()
+        self.stdout.write(
+            self.style.SUCCESS("✅ Crescimento das crianças criados com sucesso.")
+        )
+
         # Criando Endereços
         seeder.add_entity(
             Endereco,
@@ -260,141 +441,3 @@ class Command(BaseCommand):
 
         # Seed completo
         self.stdout.write(self.style.SUCCESS("✅ Banco de dados populado com sucesso!"))
-
-
-# from .api.fyrebase import auth
-
-# print("✅ Banco limpo...")
-
-# # Criando endereços
-# usf_endereco = {
-#     "logradouro": "Rua Ozório Veloso, Funcionários",
-#     "cep": "58079570",
-#     "numero": 120,
-#     "estado": "PB",
-#     "municipio": "João Pessoa",
-#     "complemento": "casa",
-#     "nomeUSF": "USF Funcionários",
-# }
-
-# first_profissional_endereco = {
-#     "logradouro": "Rua teste, Funcionários",
-#     "cep": "58079570",
-#     "numero": 135,
-#     "estado": "PB",
-#     "municipio": "João Pessoa",
-#     "complemento": "casa",
-#     "nomeUSF": usf_endereco["nomeUSF"],
-# }
-
-# second_profissional_endereco = {
-#     "logradouro": "Rua teste 2, Funcionários",
-#     "cep": "58079570",
-#     "numero": 144,
-#     "estado": "PB",
-#     "municipio": "João Pessoa",
-#     "complemento": "apartamento",
-#     "nomeUSF": usf_endereco["nomeUSF"],
-# }
-
-# cadastro_endereco_usf = Endereco.objects.create(**usf_endereco)
-# cadastro_endereco_profissional = Endereco.objects.create(**first_profissional_endereco)
-# cadastro_endereco_profissional = Endereco.objects.create(**second_profissional_endereco)
-
-# print("✅ Endereços criados...")
-
-# first_profissional = {
-#     "name": "Nattan Silva",
-#     "email": "natan@mail.com",
-#     "password": "12345678",
-# }
-
-# second_profissional = {
-#     "name": "Maria Souza",
-#     "email": "Maria@mail.com",
-#     "password": "12345678",
-# }
-
-# # Criando usuários
-# cadastro_natan = User.objects.create(**first_profissional)
-# cadastro_maria = User.objects.create(**second_profissional)
-
-# # Registrando profissionais no firebase
-# try:
-#     auth.create_user_with_email_and_password(
-#         email=first_profissional["email"], password=first_profissional["password"]
-#     )
-#     auth.create_user_with_email_and_password(
-#         email=second_profissional["email"], password=second_profissional["password"]
-#     )
-# except pyrebase.pyrebase.HTTPError as err:
-#     if "EMAIL_EXISTS" in str(err):
-#         print("message: Email ja existe!")
-#         exit()
-#     else:
-#         print(f"erro: {str(err)}")
-#         exit()
-
-
-# print("✅ Profissionais criados...")
-
-# # Criando crianças
-# first_crianca = {
-#     "nomeDaCrianca": "Joazinho",
-#     "sexo": "masculino",
-#     "cpf": "55555555566",
-#     "nomeDaMae": "Flávia",
-#     "cpfDaMae": "12345678999",
-#     "dataNascimento": "25-05-2024",
-#     "idadeCrianca": "primeira semana",
-#     "maternidade": "Maria da Neves",
-#     "tipoDoParto": "normal",
-#     "idadeGestacional": "9 meses",
-#     "dataNascimentoMae": "24-08-1995",
-# }
-
-# second_crianca = {
-#     "nomeDaCrianca": "Pedrinho",
-#     "sexo": "masculino",
-#     "cpf": "55555555577",
-#     "nomeDaMae": "Salete",
-#     "cpfDaMae": "12345678988",
-#     "dataNascimento": "03-06-2024",
-#     "idadeCrianca": "primeira semana",
-#     "maternidade": "Maria da Neves",
-#     "tipoDoParto": "cesária",
-#     "idadeGestacional": "9 meses",
-#     "dataNascimentoMae": "19-12-1993",
-# }
-
-# third_crianca = {
-#     "nomeDaCrianca": "Silvinha",
-#     "sexo": "feminino",
-#     "cpf": "12555555577",
-#     "nomeDaMae": "Salete",
-#     "cpfDaMae": "12345678988",
-#     "dataNascimento": "25-05-2024",
-#     "idadeCrianca": "primeira semana",
-#     "maternidade": "Maria da Neves",
-#     "tipoDoParto": "cesária",
-#     "idadeGestacional": "9 meses",
-#     "dataNascimentoMae": "19-12-1993",
-# }
-
-# cadastro_first_crianca = Crianca.objects.create(**first_crianca)
-# cadastro_second_crianca = Crianca.objects.create(**second_crianca)
-# cadastro_third_crianca = Crianca.objects.create(**third_crianca)
-
-# print("✅ Crianças criadas...")
-
-# CriancaProfissional.objects.create(
-#     idCrianca=cadastro_first_crianca, idProfissional=cadastro_natan
-# )
-# CriancaProfissional.objects.create(
-#     idCrianca=cadastro_second_crianca, idProfissional=cadastro_natan
-# )
-# CriancaProfissional.objects.create(
-#     idCrianca=cadastro_third_crianca, idProfissional=cadastro_maria
-# )
-
-# print("✅ Crianças relacionadas aos profissionais...")
